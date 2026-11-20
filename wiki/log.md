@@ -20,3 +20,5 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - 課金説明の訂正をVault内に反映：README.mdとDECISIONS.mdに残っていた「Pro月$20 Agent SDKクレジット」表記を修正（正しくはPro通常利用枠、別枠なし）。DECISIONS.mdのA-1〜A-3を決定済みに更新（GitHub Private／Windows／新規Vault）。`templates/session-report.md` を追加し、`AI/sessions/` の報告書式を固定。SETUP.mdのGitSync同期タイミングを公式仕様（定期は最短30分間隔）に合わせて訂正。
 - SETUP.md を追加：Android=GitSync方式、Windows=clone+Obsidian Git の手順を明記。
 - AndroidのGitSync同期が完了（Documents/second-brainへ直接クローン、定期同期15分間隔）。SETUP.mdを実績手順に更新。
+- デイリーノート `50-daily/2026/11/2026-11-20.md` を作成（残タスク2件・今日の実績5件）。セッションレポート：`AI/sessions/2026-11-20-1740-daily-note.md`。
+- プライベート用途のMuse/Claude Code/Obsidian連携をWeb調査し、[[private-second-brain-with-muse-claude-code-obsidian]] を新規作成（index登録済み）。趣味・買い物・Muse単体の事例は見つからず、推測と明記。セッションレポート：`AI/sessions/2026-11-20-1745-private-second-brain-research.md`。
