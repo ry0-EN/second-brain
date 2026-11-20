@@ -1,6 +1,6 @@
 # Obsidian 第二の脳 — スターターVault（案）
 
-Ryo向け。2026-11-20の提案（Museが直接やる方式＝方式1が基本、Claude CodeはPCで対話的に使う＋本当に必要な作業だけヘッドレス方式2）に基づく、すぐ使えるひな形だよ。
+Ryo向け。2026-11-20に決めた運用（基本はClaude Code経由・方式2ヘッドレスをProの通常利用枠の中で使う、Usage creditsはOFF、枠の常態化した不足時のみ方式1ベースのハイブリッドを検討）に基づく、すぐ使えるひな形だよ。
 
 ## 構成
 
@@ -21,7 +21,7 @@ Ryo向け。2026-11-20の提案（Museが直接やる方式＝方式1が基本�
 ├── AI/                  # エージェントだけが書く場所（下書き・セッション要約）
 ├── 10-projects/ 20-areas/ 30-resources/ 40-archive/
 ├── 50-daily/            # デイリーノート
-├── templates/           # daily / decision / research-note
+├── templates/           # daily / decision / research-note / session-report
 └── attachments/
 ```
 
@@ -30,7 +30,7 @@ PARAを土台に、Karpathy流 LLM Wiki（`raw/` → `wiki/`）を重ねたハ�
 ## 使い方（最短）
 
 1. このフォルダを丸ごとPCにコピーして、Obsidianで「Open folder as vault」する。
-2. `git init` して、決めた置き場（GitHub Private / Gitea / GitLab）に push する。置き場が未定なら、まずローカルGitだけでもOK。
+2. 置き場は決定済み：GitHub Private `ry0-EN/second-brain`（2026-11-20作成・初回push済み）。PCでは `git clone https://github.com/ry0-EN/second-brain.git` するだけ。
 3. Obsidian Git プラグインを入れて、auto-pull / auto-commit をオンにする。
 4. kepano/obsidian-skills を入れる（`npx skills add kepano/obsidian-skills` かプラグイン経由）。これがないとエージェントが普通のMarkdownを書いて wikilink を壊しがち。
 5. このチャットで「調べてObsidianにまとめて」と投げるだけ。アタシがこのVaultを読み書きして、diffを見せて、RyoがOKしたら commit / push するよ。
@@ -38,9 +38,9 @@ PARAを土台に、Karpathy流 LLM Wiki（`raw/` → `wiki/`）を重ねたハ�
 ## お金のガードレール（Proプラン）
 
 - 追加費用ゼロが基本。Museが直接やる方式1はClaude Codeを経由しないから費用ゼロ。
-- ヘッドレス（`claude -p`）を使う場合だけ、Proに含まれる月$20分のAgent SDKクレジットから引かれる。使い切ったら止まるだけ。
-- **Extra Usage（従量課金）はOFFのままにしておくこと。** ONにしない限り、Pro以上の課金は発生しない。
-- 1回のヘッドレス実行の上限は `$2 / 20ターン` から始めるのが無難（DECISIONS.md参照）。
+- ヘッドレス（`claude -p`）はProの通常利用枠（対話利用と共有）から消費される。Pro向けの月$20 Agent SDKクレジットという別枠は存在しない（2026年10月の制度変更で廃止／月次APIクレジットはMax・Teamのみ対象）。使い切ったら止まるだけ。
+- **Usage credits（旧Extra Usage、従量課金）はOFFのままにしておくこと。** ONにしない限り、Pro以上の課金は発生しない。
+- 1回のヘッドレス実行の上限は `20ターン`（AGENTS.md・DECISIONS.md参照）。
 
 ## 最初の試運転テーマ
 
