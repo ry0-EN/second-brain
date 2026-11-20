@@ -32,10 +32,21 @@ def main() -> int:
         ("wiki/index.md", None),
         ("DECISIONS.md", None),
         ("wiki/log.md", 30),
-        ("wiki/mistake.md", None),
+        ("Knowledge/mistakes.md", None),
     ):
         body = read(rel, tail)
         if body:
+            parts.append(f"===== {rel} =====\n{body}")
+    import glob as _glob
+
+    for path in sorted(_glob.glob(os.path.join(ROOT, "Preferences", "*.md"))):
+        try:
+            with open(path, encoding="utf-8") as f:
+                body = f.read().strip()
+        except Exception:
+            body = ""
+        if body:
+            rel = os.path.relpath(path, ROOT)
             parts.append(f"===== {rel} =====\n{body}")
     context = "\n\n".join(parts)[:MAX_CHARS]
     if not context:
