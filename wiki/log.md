@@ -22,3 +22,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - AndroidのGitSync同期が完了（Documents/second-brainへ直接クローン、定期同期15分間隔）。SETUP.mdを実績手順に更新。
 - デイリーノート `50-daily/2026/11/2026-11-20.md` を作成（残タスク2件・今日の実績5件）。セッションレポート：`AI/sessions/2026-11-20-1740-daily-note.md`。
 - プライベート用途のMuse/Claude Code/Obsidian連携をWeb調査し、[[private-second-brain-with-muse-claude-code-obsidian]] を新規作成（index登録済み）。趣味・買い物・Muse単体の事例は見つからず、推測と明記。セッションレポート：`AI/sessions/2026-11-20-1745-private-second-brain-research.md`。
+- ダッシュボード.md を新設：会話要約とClaude活動レポートを一目で確認するノート。AGENTS.md に「作業の最後に最新化」を義務付け。
