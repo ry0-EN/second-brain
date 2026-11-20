@@ -7,7 +7,7 @@ related: []
 
 ユーザープロファイル（Ryo）
 
-会話の中で分かった好み・スタイルをここに蓄積する。カテゴリが増えたら `Preferences/<category>.md` に分割する。
+会話の中で分かった好み・スタイルをここに蓄積する。カテゴリ別の詳細：[[Preferences/communication]] / [[Preferences/decision-making]] / [[Preferences/work-style]]
 
 ## 基本
 - 呼び方：Ryo
