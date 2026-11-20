@@ -19,3 +19,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - 実行ごとのセッションレポート（`AI/sessions/`）を必須化。履歴をデバイス問わず辿れるように。
 - 課金説明の訂正をVault内に反映：README.mdとDECISIONS.mdに残っていた「Pro月$20 Agent SDKクレジット」表記を修正（正しくはPro通常利用枠、別枠なし）。DECISIONS.mdのA-1〜A-3を決定済みに更新（GitHub Private／Windows／新規Vault）。`templates/session-report.md` を追加し、`AI/sessions/` の報告書式を固定。SETUP.mdのGitSync同期タイミングを公式仕様（定期は最短30分間隔）に合わせて訂正。
 - SETUP.md を追加：Android=GitSync方式、Windows=clone+Obsidian Git の手順を明記。
+- AndroidのGitSync同期が完了（Documents/second-brainへ直接クローン、定期同期15分間隔）。SETUP.mdを実績手順に更新。
