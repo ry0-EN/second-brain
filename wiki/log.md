@@ -29,3 +29,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - 地雷（提案の作法）を Preferences/communication.md に追記：推測で提案せず、根拠情報を整理してから提案する。
 - Muse側の作業として「プライベート活用術」資料PDF（A4・8ページ）を作成。元は [[private-second-brain-with-muse-claude-code-obsidian]]、一次ソース2件（Classmethod／Karpathy gist）を裏取り。Claude Code経由ではない作業もセッションレポートに残す運用を確認。レポート：`AI/sessions/2026-11-20-1954-muse-pdf-guide.md`。
 - 作業ログを実行主体で分離（Ryo指定）：セッションレポートを `AI/sessions/claude-code/`（Claude Code経由）と `AI/sessions/muse/`（Muse直接）に分け、既存3件を移設。AGENTS.md のレポート規則とダッシュボードの「Claudeの動き」表示も2区分に更新。レポートには成果物の場所を必ず明記する。
+- Claude Code経由で `AI/活用術-資料.md` を作成（type=document）。正本は [[private-second-brain-with-muse-claude-code-obsidian]]、裏取りは `00-inbox/source-karpathy-llm-wiki.md` と `00-inbox/source-classmethod-daily-note.md`。確認済み／未検証／推測を区別して記載。裏取りで正本2点のズレを発見（「今日やる3つ」は原文になし、形骸化は「半年」でなく約2ヶ月）→ 修正はlintとして提案のみ。raw/は未変更。レポート：`AI/sessions/claude-code/2026-11-20-2010-katsuyojutsu-shiryo.md`。
