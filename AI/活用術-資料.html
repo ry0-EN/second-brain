@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>プライベート活用術 資料</title>
+<style>
+@page {
+  size: A4;
+  margin: 18mm 16mm 18mm 16mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font-size: 8pt; color: #888; }
+  @top-right { content: "プライベート活用術 資料"; font-size: 8pt; color: #888; }
+}
+@page :first { @top-right { content: none; } }
+html { font-family: "Noto Sans CJK JP", "Noto Sans JP", sans-serif; font-size: 10pt; line-height: 1.75; color: #222; }
+body { margin: 0; }
+h1 { font-size: 22pt; margin: 0 0 4mm; color: #1f3a5f; border-bottom: 3px solid #1f3a5f; padding-bottom: 3mm; }
+h2 { font-size: 14pt; color: #fff; background: #1f3a5f; padding: 2mm 4mm; border-radius: 2mm; margin: 8mm 0 3mm; break-after: avoid; }
+h3 { font-size: 11.5pt; color: #1f3a5f; border-left: 4px solid #4a7bb7; padding-left: 3mm; margin: 6mm 0 2mm; break-after: avoid; }
+ul { margin: 1mm 0 2mm; padding-left: 5mm; }
+ul ul { margin: 0; }
+li { margin: 0.8mm 0; }
+code { font-family: "Noto Sans Mono CJK JP", "DejaVu Sans Mono", monospace; background: #eef1f5; padding: 0 1mm; border-radius: 1mm; font-size: 9pt; }
+section { break-inside: auto; }
+.card { break-inside: avoid; }
+.meta { background: #f3f6fa; border: 1px solid #d5deea; border-radius: 2mm; padding: 3mm 4mm; margin-bottom: 4mm; }
+.meta table { border-collapse: collapse; width: 100%; margin-top: 2mm; }
+.meta td { padding: 1.5mm 2mm; border-top: 1px solid #d5deea; vertical-align: top; }
+.badge { display: inline-block; font-weight: bold; font-size: 8.5pt; padding: 0 2.2mm; border-radius: 2mm; line-height: 1.5; white-space: nowrap; }
+.ok { background: #d9f2e1; color: #11662f; border: 1px solid #11662f; }
+.unv { background: #fff1cc; color: #7a5200; border: 1px solid #b07a00; }
+.gs { background: #fde0e0; color: #8f1d1d; border: 1px solid #8f1d1d; }
+.prop { background: #e6e0fa; color: #46288f; border: 1px solid #46288f; }
+.note { background: #fff8e6; border-left: 4px solid #e0a800; padding: 2mm 4mm; margin: 2mm 0; }
+.warn { background: #fdecec; border-left: 4px solid #c0392b; padding: 2mm 4mm; margin: 2mm 0; }
+.block-ok { border-left: 4px solid #2e9e5b; background: #f4fbf6; padding: 1mm 3mm; margin: 2mm 0; }
+.block-unv { border-left: 4px solid #d9a000; background: #fffbef; padding: 1mm 3mm; margin: 2mm 0; }
+.block-gs { border-left: 4px solid #c0392b; background: #fff6f6; padding: 1mm 3mm; margin: 2mm 0; }
+.block-prop { border-left: 4px solid #6a4fc4; background: #f8f6fe; padding: 1mm 3mm; margin: 2mm 0; }
+.block-ok, .block-unv, .block-gs, .block-prop { break-inside: avoid; }
+.quote { font-style: italic; color: #333; }
+a, .url { color: #1a56a8; word-break: break-all; }
+.wl { color: #46288f; }
+</style>
+</head>
+<body>
+
+<h1>プライベート活用術 資料</h1>
+
+<div class="meta">
+<ul>
+  <li>正本：<span class="wl">[[private-second-brain-with-muse-claude-code-obsidian]]</span>（調査ページ・下書き）</li>
+  <li>裏取り根拠（一次ソース転記）：<span class="wl">[[00-inbox/source-karpathy-llm-wiki]]</span>、<span class="wl">[[00-inbox/source-classmethod-daily-note]]</span></li>
+  <li>表記ルール（ラベルの意味）：</li>
+</ul>
+<table>
+  <tr><td><span class="badge ok">確認済み</span></td><td>上記2件の原文で確認できた</td></tr>
+  <tr><td><span class="badge unv">未検証</span></td><td>wiki出典のみで原文未確認</td></tr>
+  <tr><td><span class="badge gs">推測</span></td><td>実例なし</td></tr>
+</table>
+<div class="note">注意：Classmethod記事は業務での運用例。プライベートへの転用は筆者（Claude）の解釈。</div>
+</div>
+
+<section>
+<h2>1. 全体像 <span class="badge ok">確認済み</span>：Karpathy</h2>
+<div class="block-ok">
+<ul>
+  <li>3層構造：<code>raw/</code>（元資料・不変）／<code>wiki/</code>（LLMが所有）／schema（<code>CLAUDE.md</code> / <code>AGENTS.md</code>）。このVaultの構成と一致。</li>
+  <li>喩え：<span class="quote">「Obsidian is the IDE; the LLM is the programmer; the wiki is the codebase.」</span></li>
+  <li>操作は3つ：
+    <ul>
+      <li><b>Ingest</b>：raw → 要約ページ → index・関連ページ更新（1資料で10〜15ページ）→ log追記</li>
+      <li><b>Query</b>：良い答えはwikiに戻して蓄積</li>
+      <li><b>Lint</b>：矛盾・古い主張・孤立ページ・リンク切れ・抜けを点検</li>
+    </ul>
+  </li>
+  <li><code>index.md</code>（カタログ）と <code>log.md</code>（append-only）。中規模（約100資料・数百ページ）ならRAG基盤なしで回ると記載。</li>
+  <li>続く理由：<span class="quote">「The tedious part of a knowledge base is bookkeeping, not thinking.」</span>人は維持の手間で挫折するが、LLMは1回で15ファイルに触れられる。</li>
+  <li>wikiはただのgitリポジトリ → 履歴が無料で残る。</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>2. 用途別の活用</h2>
+
+<h3>2-1. 日々の記録と振り返り</h3>
+<div class="block-ok">
+<span class="badge ok">確認済み</span>（Classmethod）：
+<ul>
+  <li>朝コマンド：前日の「明日やる」とGoogle Calendarの予定から今日のデイリーノートを作る。</li>
+  <li>夜コマンド：今日のノートを読み、カレンダーと照合し、質問に答えて更新。</li>
+  <li>学び：振り返りは約2ヶ月で毎回同じパターンになりがち → 目標連動のKPT（Keep/Problem/Try）に変更。</li>
+  <li>質問は選択式（AskUserQuestion）にして回答を速くした。</li>
+  <li>月次レビューを自動生成。数値は推測・概算を書かない設計。</li>
+</ul>
+</div>
+<div class="block-unv"><span class="badge unv">未検証</span>：夜間にClaude Codeが自由記述を構造化（MindStudio）、<code>/process-daily</code>（Rob Dodson）、libecity記事。</div>
+<div class="warn"><b>未確認の記述に注意：</b>wiki本文の「今日やる3つ」は、Classmethod原文には出てこない。</div>
+<div class="block-prop"><span class="badge prop">適用案（推測）</span>：<code>50-daily/</code> を入口に、Muse口述 → <code>00-inbox/</code> → 整理。週次レビューは <code>AI/</code> に下書き。</div>
+
+<h3>2-2. 読書・学習</h3>
+<div class="block-ok"><span class="badge ok">確認済み</span>（Karpathy）：読書は章ごとにファイルし、登場人物・テーマ・筋のページを作る使い方が挙がっている（ファンwiki型）。コース学習ノートも例示。</div>
+<div class="block-unv"><span class="badge unv">未検証</span>：自分の読書メモを <code>raw/</code> 扱いにして原本と分離する実例（diyazy）。</div>
+<div class="block-prop"><span class="badge prop">適用案</span>：感想は自分の言葉のまま残し、AIの要約はwikiに置いて混ぜない（AGENTS.mdの規則どおり）。</div>
+
+<h3>2-3. 趣味・旅行</h3>
+<div class="block-ok"><span class="badge ok">確認済み</span>（Karpathy）：旅行計画・趣味の深掘りが「時間をかけて知識を貯める用途」として列挙されている。</div>
+<div class="block-unv"><span class="badge unv">未検証</span>：趣味特化の事例（vinipx/brain、claudecodehq）。調査では専用事例は見つからなかった。</div>
+<div class="block-gs"><span class="badge gs">適用案（推測）</span>：趣味ごとに1ページ。新しい型は <code>templates/</code> に勝手に作らず、Ryoの指示があるときだけ。</div>
+
+<h3>2-4. 買い物・調べ物</h3>
+<div class="block-ok"><span class="badge ok">確認済み</span>（Karpathy）：Queryの良い答えをwikiに戻す流れがそのまま使える（Research用途）。</div>
+<div class="block-gs">買い物専用の事例は見つからず（<span class="badge gs">推測</span>）。価格・制度は変わるため、日付と出典を残す（<span class="wl">[[Knowledge/mistakes]]</span> の再発防止と整合）。</div>
+
+<h3>2-5. 個人アプリ開発</h3>
+<div class="block-unv"><span class="badge unv">未検証のみ</span>：<code>CLAUDE.md</code> 運用（starmorph、mibii）、セッション記録（obsx）、Claudesidian。原文未確認のため、ここでは方向性の紹介にとどめる。</div>
+
+<h3>2-6. 家族・生活タスク</h3>
+<div class="block-unv"><span class="badge unv">未検証のみ</span>：LifeOS-OSS、artemxtech、TaskNotes。</div>
+<div class="block-ok"><span class="badge ok">確認済み</span>（このVaultの規則）：機密性が高い内容はPrivateリポジトリ前提、秘密情報は書かない（AGENTS.md）。</div>
+</section>
+
+<section>
+<h2>3. Museの位置づけ <span class="badge gs">推測</span></h2>
+<div class="block-gs">
+<ul>
+  <li>Muse専用の事例は調査で見つかっていない。</li>
+  <li>推測：外出先・スマホでは会話の入口（思いつき・口述）、机の前ではClaude Codeが整理・一括処理。実例で検証した分担ではない。</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>4. 落とし穴</h2>
+<div class="block-ok"><span class="badge ok">確認済み</span>：振り返りの形骸化（Classmethod）、維持の手間でwikiが放棄される（Karpathy → lintで対処）。</div>
+<div class="block-unv"><span class="badge unv">未検証</span>：ノートの増えすぎ、記事の多くが個人・商用ブログでメンテ状況不明。</div>
+<div class="warn"><b>補足：</b>wiki本文の「半年続けると形式的になる」は、原文では「約2ヶ月で同じパターン化、半年運用して気づいた」。正本の表現は要修正候補（lintで提案、Ryo承認後）。</div>
+</section>
+
+<section>
+<h2>5. 最初の一歩 <span class="badge prop">提案</span></h2>
+<div class="block-prop">
+<ul>
+  <li>デイリー運用（朝の予定確認／夜の振り返り）を1週間試す。</li>
+  <li>調べ物ページを1つ作り、出典と日付を残す。</li>
+  <li>2〜3週間後に lint と週次レビューを試し、続くものだけ型にする。</li>
+</ul>
+</div>
+</section>
+
+<section>
+<h2>出典</h2>
+<ul>
+  <li><span class="badge ok">一次（原文確認済み）</span> <span class="url">https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f</span></li>
+  <li><span class="badge ok">一次（原文確認済み）</span> <span class="url">https://dev.classmethod.jp/ja/articles/claude-code-daily-note-three-improvements/</span></li>
+  <li><span class="badge unv">未検証</span> その他の出典は正本 <span class="wl">[[private-second-brain-with-muse-claude-code-obsidian]]</span> の「出典」を参照。</li>
+</ul>
+</section>
+
+</body>
+</html>
