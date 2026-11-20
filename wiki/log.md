@@ -25,3 +25,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - ダッシュボード.md を新設：会話要約とClaude活動レポートを一目で確認するノート。AGENTS.md に「作業の最後に最新化」を義務付け。
 - 行動ルール（Ryo指定：読み取り手順／Knowledge・Decisions・Preferencesへの即時書き込み／命名・形式／mistakes追記条件／読み書きの明示報告／作業スタイル）をAGENTS.mdに正本化。mistakesを Knowledge/mistakes.md へ移転し、Preferences/profile.md を新設。注入フックも追随。
 - プロファイル第1弾を記録：Preferences/communication.md、decision-making.md、work-style.md を新設（Ryoの回答9件）。
+- プロファイル第2弾を記録：Preferences/lifestyle.md、development.md、interests.md を新設し、communication.md に調べ物の深さの好みを追記。
