@@ -17,3 +17,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - ミス記録の仕組みを追加：`wiki/mistake.md` を新設し、AGENTS.md に「作業前のミス確認」と「ミス発生時の追記必須」を明記。初回エントリとして本日の課金制度の誤案内を記録。
 - SessionStartフック（inject-memory）を追加：全セッション開始時に index / DECISIONS / log直近 / mistake を自動注入。ヘッドレス実行で注入のみから回答できることを実測で確認。
 - 実行ごとのセッションレポート（`AI/sessions/`）を必須化。履歴をデバイス問わず辿れるように。
+- SETUP.md を追加：Android=GitSync方式、Windows=clone+Obsidian Git の手順を明記。
