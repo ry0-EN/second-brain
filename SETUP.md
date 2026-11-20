@@ -15,9 +15,9 @@
 - 同期は準リアルタイム：アプリ開閉時・手動・ウィジェットなら数秒〜数分、定期チェックだけだと最短30分間隔（GitSync公式仕様）。確実に最新が欲しい時は、見る前に手動で1回同期するのが安全。
 - VM 側で Claude が作業している最中は、同じノートをスマホで編集しない（競合防止）。
 
-## Windows PC（閲覧＋編集）— 今夜のチェックリスト
+## Windows PC（閲覧＋編集）— チェックリスト（2026-11-20 完了済み）
 
-所要の目安：30〜45分。終わったらこのチャットで「できた」と声をかけて。詰まった画面はスクショを送ればその場で案内する。
+初回セットアップは2026-11-20夜に全ステップ完了。以後は再セットアップ時の手順書として使う。所要の目安：30〜45分。詰まった画面はスクショを Muse チャットに送ればその場で案内する。
 
 ### 0. 始める前の確認
 - スマホのGitSyncで1回**手動同期**しておく（PC側が最新版をcloneするため）。
@@ -46,31 +46,40 @@ git log --oneline -3
 - 最初に開くノートはルートの **`ダッシュボード.md`** にする（今日の要約・残タスク・レポート一覧が1枚で見える）。
 - `Knowledge/mistakes.md` と `SETUP.md` が見えることを確認する。
 
-### 5. Obsidian Gitプラグインの設定
-1. 設定 → コミュニティプラグイン → 制限付きモードをOFF → 「閲覧」から **Obsidian Git** を検索してインストール → 有効化。
+### 5. Obsidian Gitプラグインの設定（2026-11-20 実績版）
+1. 設定 → コミュニティプラグイン → 制限付きモードをOFF → 「閲覧」で **Git** とだけ検索（作者は Vinzent。表示名は「Obsidian Git」ではないため、フルネーム検索ではヒットしない）→ インストール → 有効化。
 2. 設定 → Git で次を設定する（AndroidのGitSync 15分間隔に合わせた値）：
-   - Auto commit-and-sync interval (minutes)：**15**
-   - Auto commit-and-sync after stopping file edits：**ON**
-   - Auto pull interval (minutes)：**15**
-   - Pull on startup：**ON**
-   - Push on commit-and-sync：**ON**
-   - Merge strategy：**Merge**
-   - Author name / Author email：RyoのGitHubと同じ名前・メール（`ry0-EN` のアカウントに合わせる）
-3. コマンドパレット（`Ctrl+P`）→ `Obsidian Git: Create backup` を1回実行して、GitHubにcommitがpushされることを確認する。
+   - **Automatic**：
+     - Use separate commit and push intervals：**ON**（OFFだと Auto push / Auto pull がグレーアウトして変更できない）
+     - Auto commit-and-sync interval (minutes)：**15**
+     - Auto commit-and-sync after stopping file edits：**ON**
+     - Auto push interval (minutes)：**15** ／ Auto pull interval (minutes)：**15**
+   - **Sync**：
+     - Merge strategy：**Merge** ／ Merge strategy on conflicts：**None (Git default)**
+     - Pull on startup：**ON**
+     - Push on commit-and-sync：**ON** ／ Pull on commit-and-sync：**ON** ／ Squash commits before push：**OFF**
+   - **Identity**：
+     - Repository author name：**ry0-EN** ／ Repository author email：**既存コミットと同じメール**（空欄だとグローバル設定を参照する。PCでグローバル未登録のままだとコミットできない）
+   - その他のカテゴリ（Commit / Editor / Views / Interface / Advanced）はデフォルトのまま。
+3. コマンドパレット（Obsidianの画面上で `Ctrl+P`）→ **`Git: Commit-and-sync`** を1回実行して、GitHubにcommitがpushされることを確認する（旧称の `Create backup` は現行バージョンには無い）。Obsidianの通知はすぐ消えて履歴も残らないため、到達確認は Git の履歴ビュー（`Git: Open history view`）か GitHub 側で行う。
+   - 実績（2026-11-20）：`vault backup` コミット2件がGitHubに到達し、`00-inbox/pc-test.md` がスマホのObsidianでも確認できた。
 
 ### 6. Claude Code Remote Controlの確認（PC対話セッションをスマホから見る用）
-- PCに **Claude Code** をインストールし、Proアカウントでログインする（VM側と同じ手順。ログインリンクはチャットで出す）。
-- Vaultフォルダで `claude` を起動し、セッション内で `/remote-control` を実行する（または `claude remote-control` で起動）。
-- 表示されるQRコードをスマホのClaudeアプリで読み取るか、Claudeアプリの **Codeタブ** からセッションを選ぶ。
-- 確認ポイント：スマホからPCセッションの進行が見えること、メッセージを送れること。
-- 注意：Remote ControlはPCが起動中で `claude` プロセスが動いている間だけ使える。PCがスリープすると切れ、復帰時に再接続される。**ヘッドレス実行（`claude -p`）はClaudeアプリには出ない**ので、履歴は従来どおり `AI/sessions/` とこのチャットで辿る。
+- 起動方式は CLI版と **Claude Desktopアプリ版** の2通りあり、公式でもどちらからでも Remote Control を開始できる。2026-11-20 に Ryo が **Desktopアプリ版** を選択し、そちらで確認完了（判断の記録は [[Decisions/2026-11-20-pc-claude-code-desktop]]）。
+- Desktopアプリ版の手順（実績）：
+  1. Claudeアプリ（Windows）を入れ、Proアカウントでサインイン → **Codeタブ** → 新規セッション。
+  2. 入力欄下の設定：Environment＝**このコンピューター（Local）**、フォルダ＝`second-brain`、権限モード＝**手動（Manual）**（入力欄右下の「自動」をクリックして切り替える）。
+  3. 「このワークスペースを信頼しますか？」が出たら **ワークスペースを信頼**。信頼後にフォルダ名の右へ出る **ワークツリー** のチェックボックスは **OFFのまま**（ONだと隔離コピーが作られ、Obsidianで開いているフォルダとズレる）。
+  4. `/remote-control` を打つと `/remote-control isn't available in this environment.` と返る場合がある（2026-11-20 実績）。その時はセッション右パネル「環境」カードの **Remote Control スイッチをON** にする。「Remote Control がオンになりました」と表示されれば成功。
+  5. スマホのClaudeアプリ → **Codeタブ** のセッション一覧に、PCアイコン＋緑ドットのセッションが出る。スマホから送った文がPCにリアルタイム表示され、返事がスマホに返ればOK（実績済み）。
+- 注意：Remote ControlはPCが起動中でセッションが動いている間だけ使える。PCがスリープすると切れ、復帰時に再接続される。**ヘッドレス実行（`claude -p`）はClaudeアプリには出ない**ので、履歴は従来どおり `AI/sessions/` とこのチャットで辿る。
 - 参考：公式ドキュメント https://code.claude.com/docs/en/remote-control
 
-### 7. 完了チェック
-- [ ] `ダッシュボード.md` がPCのObsidianで開ける
-- [ ] Obsidian Gitの自動commit・pushが動く（編集 → 15分以内にGitHubへ反映）
-- [ ] スマホのGitSyncで手動同期 → PCでの編集がスマホのObsidianに反映される
-- [ ] Remote ControlでスマホからPCセッションが見える
+### 7. 完了チェック（2026-11-20 全項目クリア）
+- [x] `ダッシュボード.md` がPCのObsidianで開ける
+- [x] Obsidian Gitのcommit・pushが動く（手動 Commit-and-sync で到達確認済み。自動も15分間隔で設定済み）
+- [x] スマホのGitSyncで手動同期 → PCでの編集（`00-inbox/pc-test.md`）がスマホのObsidianに反映される
+- [x] Remote ControlでスマホからPCセッションが見え、メッセージも送れる
 
 ## 共通ルール
 
