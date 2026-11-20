@@ -1,0 +1,14 @@
+# Obsidian / vault
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/cache
+.trash/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Secrets — never commit
+.env
+*.pem
+*.key
