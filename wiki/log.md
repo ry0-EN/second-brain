@@ -46,3 +46,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - アバターアプリの追加決定（Ryo回答）：端末はGalaxy Z Fold5（両ディスプレイ対応）、キーボードはSimeji、吹き出しタップはMuseアプリ起動トリガーに変更（アプリ内チャット／API頭脳は作らない）。アニメーションはAI生成クリップ方式をPhase 2前に検討。たたき台§9に反映。レポート：`AI/sessions/muse/2026-11-21-1357-avatar-app-decisions.md`。
 - アバターアプリ Phase 0a 完了（Muse直接作業、雛形のみClaude Code）：VMにJDK 17／Android SDK／Gradle 8.9を配置し、空アプリ jp.ryo.museavatar のdebug APK（813KB）のビルドに成功。Java通信が出口プロキシに遮断される制約を切り分け、依存をPythonで事前ミラーするオフライン方式を確立（[[Knowledge/android-build-on-muse-vm]]）。アニメーションは3方式の小実験で比較する方針も確定。レポート：`AI/sessions/muse/2026-11-21-1552-avatar-app-phase0-build.md`。次はPhase 0b（Fold5へのインストール確認）。
 - アバターアプリ Phase 0b 完了：RyoがFold5にAPKをインストールし、実機で「Muse Avatar - Phase 0」の表示を確認。Phase 0（ビルド環境＋実機動作確認）全体が完了。次はPhase 1（静止画アバターのオーバーレイ表示）。
+- アバターアプリ Phase 1〜2（改訂版）完了：静止画オーバーレイを両画面で確認し、アニメーションはスプライト方式に決定、30fps・横向き歩行・振り向き対応の改訂版APK（10.9MB）を実機確認。レポート：`AI/sessions/muse/2026-11-21-1911-avatar-app-phase1-phase2.md`。次は Phase 3。
