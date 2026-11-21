@@ -39,8 +39,9 @@
 
 ## Gitと承認
 
-- 作業前は `git pull`、作業後は `git diff` を見せる。RyoがOKしたら commit / push。
-- 低リスク作業だけ、慣れてきたら自動commitに緩めてよい（Ryoの判断）。
+- 作業前は `git pull` する。
+- **自動push（2026-11-21 Ryo指示で変更）**：新しい決め事・運用ルールの変更・修正を行ったときは、Ryoへの事前確認なしで自動的に commit / push する。対象はその変更自体と、それに伴う記録（Decisions / Knowledge / Preferences / ダッシュボード / wiki/log / セッションレポート）。push後は結果（commitハッシュと内容）をチャットで報告する。`git diff` の確認はClaude側で責任を持って行う。
+- 上記に当たらない作業（新規の調査・下書き等）の commit / push は、従来どおりRyoのOKが出てから。
 - `git push --force` や履歴の書き換えは禁止。
 - commitメッセージには作業内容とセッションの要約を入れる。
 - 作業レポートは実行主体で分けて残す（2026-11-20 Ryo指定）：Claude Code経由の作業は `AI/sessions/claude-code/YYYY-MM-DD-HHmm-<作業名>.md`、MuseがClaude Code経由なしに直接行った作業は `AI/sessions/muse/YYYY-MM-DD-HHmm-<作業名>.md` にセッションレポートを残す（指示内容／処理の流れ／変更したファイル／結果／消費ターン数。Muse直接分はターン数の代わりに作業概要）。レポートには成果物の場所（Vault内パス、またはMuse側の成果物名）を必ず明記する。Ryoが後から「何をやって、どうなったか」をデバイス問わず辿れるようにするため。ダッシュボードの「Claudeの動き」もこの2区分で分けて載せる。
