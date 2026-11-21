@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>新規活用法レポート</title>
+<style>
+@page {
+  size: A4;
+  margin: 18mm 16mm 18mm 16mm;
+  @bottom-center { content: counter(page) " / " counter(pages); font-size: 8pt; color: #888; }
+  @top-right { content: "新規活用法レポート"; font-size: 8pt; color: #888; }
+}
+@page :first { @top-right { content: none; } }
+html { font-family: "Noto Sans CJK JP", "Noto Sans JP", sans-serif; font-size: 10pt; line-height: 1.75; color: #222; }
+body { margin: 0; }
+h1 { font-size: 22pt; margin: 0 0 4mm; color: #1f3a5f; border-bottom: 3px solid #1f3a5f; padding-bottom: 3mm; }
+h2 { font-size: 14pt; color: #fff; background: #1f3a5f; padding: 2mm 4mm; border-radius: 2mm; margin: 8mm 0 3mm; break-after: avoid; }
+h3 { font-size: 11.5pt; color: #1f3a5f; border-left: 4px solid #4a7bb7; padding-left: 3mm; margin: 2mm 0 2mm; break-after: avoid; }
+p { margin: 1mm 0 2mm; }
+ul { margin: 1mm 0 2mm; padding-left: 5mm; }
+li { margin: 0.8mm 0; }
+code { font-family: "Noto Sans Mono CJK JP", "DejaVu Sans Mono", monospace; background: #eef1f5; padding: 0 1mm; border-radius: 1mm; font-size: 9pt; }
+section { break-inside: auto; }
+.card { break-inside: avoid; margin: 4mm 0; }
+.meta { background: #f3f6fa; border: 1px solid #d5deea; border-radius: 2mm; padding: 3mm 4mm; margin-bottom: 4mm; }
+.meta table { border-collapse: collapse; width: 100%; margin-top: 2mm; }
+.meta td { padding: 1.5mm 2mm; border-top: 1px solid #d5deea; vertical-align: top; }
+.badge { display: inline-block; font-weight: bold; font-size: 8.5pt; padding: 0 2.2mm; border-radius: 2mm; line-height: 1.5; white-space: nowrap; }
+.ok { background: #d9f2e1; color: #11662f; border: 1px solid #11662f; }
+.unv { background: #fff1cc; color: #7a5200; border: 1px solid #b07a00; }
+.prop { background: #e6e0fa; color: #46288f; border: 1px solid #46288f; }
+.note { background: #fff8e6; border-left: 4px solid #e0a800; padding: 2mm 4mm; margin: 2mm 0; }
+.warn { background: #fdecec; border-left: 4px solid #c0392b; padding: 2mm 4mm; margin: 2mm 0; }
+.block-ok { border-left: 4px solid #2e9e5b; background: #f4fbf6; padding: 1mm 3mm; }
+.block-unv { border-left: 4px solid #d9a000; background: #fffbef; padding: 1mm 3mm; }
+.block-prop { border-left: 4px solid #6a4fc4; background: #f8f6fe; padding: 1mm 3mm; }
+table.spec { border-collapse: collapse; width: 100%; font-size: 9pt; margin: 1mm 0; }
+table.spec th { text-align: left; width: 22mm; padding: 0.8mm 2mm; vertical-align: top; color: #1f3a5f; white-space: nowrap; }
+table.spec td { padding: 0.8mm 2mm; vertical-align: top; }
+table.spec tr { border-top: 1px solid #d5deea; }
+.stars { color: #b07a00; letter-spacing: 0.5mm; }
+table.yt { border-collapse: collapse; width: 100%; font-size: 8.5pt; }
+table.yt th { background: #1f3a5f; color: #fff; padding: 1.5mm 2mm; text-align: left; }
+table.yt td { border: 1px solid #d5deea; padding: 1.5mm 2mm; vertical-align: top; }
+table.yt tr { break-inside: avoid; }
+a, .url { color: #1a56a8; word-break: break-all; }
+.url { font-size: 8pt; }
+</style>
+</head>
+<body>
+
+<h1>新規活用法レポート</h1>
+
+<div class="meta">
+<ul>
+  <li>作成：2026-11-21／根拠：<code>00-inbox/source-new-private-uses-2026-11-21.md</code>（Museが収集した全29項目）のみ。Web取得なし、ファイルにない事実は足していない。</li>
+  <li><b>除外範囲（もう知っていること）：</b>第二の脳の構築・運用、日次ノートと振り返り、PARA、Googleカレンダー/Tasksの使い分け、読書・学習ノートの基本、一般的な旅行計画・買い物調べ、個人アプリ開発という一般論、家族タスク管理の基本、Claude Codeの基本機能、SessionStartフック。</li>
+  <li>難易度：★☆☆＝非プログラマでも容易／★★☆＝中程度／★★★＝上級（範囲があるものは星を下限で表示し、範囲は文字で併記）。</li>
+  <li>ラベルの意味：</li>
+</ul>
+<table>
+  <tr><td><span class="badge ok">実例・一次報告</span></td><td>やった本人（または実機テストをした本人）の報告。ソースの Real reported に対応</td></tr>
+  <tr><td><span class="badge unv">実例・二次経由</span></td><td>実例だが、まとめ記事・要約など二次情報経由で原文未確認。ソースの Real reported（second-hand）に対応</td></tr>
+  <tr><td><span class="badge prop">提案・ガイド</span></td><td>実践ガイド。本人の実データとして確認されていない。ソースの Proposal/guide に対応</td></tr>
+</table>
+<div class="note">各項目の「留保」欄は、ソースファイルの注記（二次経由、未検証、競合メディアのテストなど）を引き継いだもの。</div>
+</div>
+
+<section>
+<h2>1. 個人データ（家計・健康）</h2>
+
+<div class="card block-ok">
+<h3>1. 家計ダッシュボード：Amazon請求の中身を暴く <span class="badge ok">実例・一次報告</span></h3>
+<p>非プログラマの経営者が、銀行・カードの明細と Amazon 注文履歴を1つのフォルダに置き、Claude Code にカテゴリ・月別のローカルHTMLダッシュボードを作らせた。大きな小売請求を実際の注文品目と突き合わせ、重複エクスポートを除去し、自分名義口座間の移動は除外する。合計は明細と照合し、別セッションを監査役にもできる。Mahmoud Halat のOSS版も同様に、サブスクの実質月額や支出と移動の区別を、銀行ログインなしの単一オフラインHTMLで出す。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://playbooks.bot/playbooks/family-budget-dashboard-from-statements-and-orders/">playbooks.bot</a> ／ <a href="https://finance.mahmoudhalat.com/">finance.mahmoudhalat.com</a><br><span class="url">https://playbooks.bot/playbooks/family-budget-dashboard-from-statements-and-orders/</span><br><span class="url">https://finance.mahmoudhalat.com/</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>2. レシート写真→Obsidian家計簿（月次自動集計） <span class="badge ok">実例・一次報告</span></h3>
+<p>3児の母がレシートを撮影し、iPhoneショートカットが <code>[spend::YYYY-MM, カテゴリ, 金額]</code> 行を持つファイルとしてVaultに自動登録する。月次のDataviewJSページを開くだけで、カテゴリ別合計（割合・件数）、家計とお小遣いの区別、明細一覧が出る。コードはClaudeが書き、本人は「ほぼ理解していない」と述べている。iPhone/iPadでも見られる。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Obsidian（Dataview）＋Claude（コード作成）＋iPhoneショートカット</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1〜2（コピペで月とフォルダを変えるだけ）</td></tr>
+<tr><th>出典</th><td><a href="https://lifeandit-log.com/archives/169">くらしとITログ</a><br><span class="url">https://lifeandit-log.com/archives/169</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>3. 10年分のApple Health → SQLite → MCPで自然言語質問 <span class="badge ok">実例・一次報告</span></h3>
+<p>iPhone/Apple Watchの10年分（1.8GB・426万レコード）をエクスポートし、Mac miniのローカルSQLiteに取り込み、FastMCPの読み取り専用サーバ（<code>query_health</code>＝生SQL、<code>get_daily_summary</code>）経由でClaudeに公開した。「2年分の月別VO2max」「歩行非対称性が大きい日」など、ヘルスアプリでは答えられない質問ができる。長期傾向なら月1回の手動再エクスポートで足りる。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code／Claude＋MCP（自作）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://zenn.dev/hideakitamai/articles/8ab4733e65e0dc">Zenn（hideakitamai）</a><br><span class="url">https://zenn.dev/hideakitamai/articles/8ab4733e65e0dc</span></td></tr>
+</table>
+</div>
+
+<div class="card block-unv">
+<h3>4. ウェアラブルによる持病の再燃・早期警戒モデル <span class="badge unv">実例・二次経由</span></h3>
+<p>Redditユーザー（u/ThatAi_guy）が、バセドウ病の再燃に備えて約9.5年分のApple Watch＋WHOOPデータと過去のエピソード・検査日をClaude Codeに渡した。複数モデルを試してXGBoostに決定し、シャッフルなしの時間分割で検証。適合率・再現率、月あたり誤警報数、過去の発症の何日前に警告できたかを報告させた。位置づけは「警告→血液検査」であり診断ではない。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://playbooks.bot/playbooks/wearable-history-early-warning-model/">playbooks.bot（要約）</a><br><span class="url">https://playbooks.bot/playbooks/wearable-history-early-warning-model/</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>Reddit原文は未開封。playbooks.bot の要約経由。バックテスト数値は未検証で、実験であり医療助言ではない。</div>
+</div>
+
+<div class="card block-ok">
+<h3>5. 「Signal」：WHOOP＋Strava＋Apple Healthの個人ヘルスエージェント <span class="badge ok">実例・一次報告</span></h3>
+<p>Michael Surtees が Claude Code で作った日常利用のエージェント。朝の「Now」ページに3つのデータ源を横断した見出し所見を1つ出す（例：皮膚温・安静時心拍・HRVが同時に動き、体調不良の初期兆候と読める。単独の計測アプリでは出ないパターン）。チャットは深掘り用の補助。別に Strava ダッシュボード（2020年以降4,905ライド）もあり、コーチ風の週次総括をワンクリックでStravaに投稿できる。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code（作る側）＋WHOOP/Strava/Apple Healthのデータ</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://michaelsurtees.com/casestudy-signal.html">Michael Surtees（事例紹介）</a><br><span class="url">https://michaelsurtees.com/casestudy-signal.html</span></td></tr>
+</table>
+</div>
+
+<div class="card block-prop">
+<h3>6. CSVライフログ分析：家計・健康・投資を月次1レポートに <span class="badge prop">提案・ガイド</span></h3>
+<p>note記事の解説。家計簿・健康記録（睡眠・歩数・心拍・体重）・投資の表をCSVで出し、Claude Code に「好調な日の条件」（例では睡眠7時間以上→翌日の歩数が平均11,240歩）、節約ポイント、投資の勝ちパターンを探させる。<code>LifeLog/finance/</code> と <code>LifeLog/health/</code> から月次のMarkdown統合レポートを生成する流れ。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://note.com/duke_pearson700/n/n07b638c20589">note（duke_pearson700）</a><br><span class="url">https://note.com/duke_pearson700/n/n07b638c20589</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>実践ガイドであり、筆者本人の長期の実データとして確認されたものではない。例は説明用の可能性がある。</div>
+</div>
+</section>
+
+<section>
+<h2>2. 家と生活管理</h2>
+
+<div class="card block-ok">
+<h3>7. Home Assistant＋Claude Codeでスマートホームをゼロ構築 <span class="badge ok">実例・一次報告</span></h3>
+<p>引っ越しを機に、長年のHAユーザーがYAML手編集ではなくClaude CodeスクリプトからHA APIを叩いて全面再構築した。60以上の照明（Matter/Xiaomi）の適応照明、ゲスト/シアター/就寝シーン、家族・来客向けの印刷用HTMLマニュアル、水漏れ警報（スマホ＋赤点滅ランプ）、洗濯機等の完了をHomePodで読み上げ、ペット監視（トイレ使用・水分摂取・砂切れ通知で買い物リマインドも追加）まで。ログを分析して新しい自動化も提案させる。設定は公開されている。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Home Assistant</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://community.home-assistant.io/t/building-my-smart-home-from-scratch-with-claude-code-home-assistant/994464">Home Assistant Community</a><br><span class="url">https://community.home-assistant.io/t/building-my-smart-home-from-scratch-with-claude-code-home-assistant/994464</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>8. Home Assistant機器の中でClaude Codeを動かし、スマホから操作 <span class="badge ok">実例・一次報告</span></h3>
+<p>ポルトガルのユーザーが、Home Assistant Green の Advanced SSH アドオン内でClaude Codeを動かす（起動ごとに再インストール、状態は <code>/config/.claude-box</code> に保持）。2026年6月以降、580コミット、129自動化、147デバイス/1,163エンティティ、7,600行のPythonで生成した10タブのダッシュボード。ポルトガル語で主にスマホから話しかけ、<code>/config</code> の編集・検証・リロード・確認までやらせる。別報告（D3X）では1週間で家全体（Zigbee/Z-Wave、ローカルAIのFrigateカメラ、英・ポーランド語の音声、概日照明）を構築し、ヘッドレス <code>claude -p</code> が週次の健康レポートを書く。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Home Assistant</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://dev.to/marcelo_sqe/how-i-built-my-entire-home-assistant-with-claude-code-running-inside-it-26ch">DEV（marcelo_sqe）</a> ／ <a href="https://d3x-solutions.com/home-assistant-claude-code-smart-home/">D3X フィールドログ</a> ／ <a href="https://blog.beguelin.com/2026/04/claude-code-home-assistant">beguelin（MCP接続のHA）</a><br><span class="url">https://dev.to/marcelo_sqe/how-i-built-my-entire-home-assistant-with-claude-code-running-inside-it-26ch</span><br><span class="url">https://d3x-solutions.com/home-assistant-claude-code-smart-home/</span><br><span class="url">https://blog.beguelin.com/2026/04/claude-code-home-assistant</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>9. Raspberry Pi の生活事務フリート：Obsidianにタスクメモを置けば15分ごとに処理 <span class="badge ok">実例・一次報告</span></h3>
+<p>Ross Goodman が自宅のRaspberry Pi 4をClaude Codeで生活事務の基盤にし、変更は約5,600ノートのVaultに記録している。<b>InboxProcessor</b>（スマホからInboxにタスクメモを置くと、ヘッドレスのClaudeが15分ごとに処理）、<b>InvoiceCapture</b>（請求メール→ヘッドレスブラウザでログイン→PDFをPaperless-ngxに保管、金額抽出）、<b>BankSync/FinanceImport＋月次FinancialReview</b>（取引データはAIに見せない設計）、<b>EventCapture</b>（メール・カレンダーから実際に行った公演・映画・飲食を週次記録）、<b>PeopleReview</b>、<b>RemarkableSync</b>（日曜にreMarkableノートをアーカイブ）、机上LEDマトリクス（次の電車・ごみ収集日・頭上の航空機）。回帰テスト38本と監視プロセスで維持している。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Obsidian＋Raspberry Pi/Home Assistant/n8n/Paperless</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://rossgoodman.com/2026/10/03/what-i-have-built-with-claude-code-so-far/">rossgoodman.com</a><br><span class="url">https://rossgoodman.com/2026/10/03/what-i-have-built-with-claude-code-so-far/</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>リサーチ時にライブで開いて確認済み（調査メモ）。</div>
+</div>
+</section>
+
+<section>
+<h2>3. メディア・習慣</h2>
+
+<div class="card block-ok">
+<h3>10. 1万超のメディアノート：映画・アニメ・ゲーム・ボドゲ・漫画 <span class="badge ok">実例・一次報告</span></h3>
+<p>2026年7月にTV Timeが終了し15年分の視聴履歴を失った Sébastien Dubois が、1作品1ノートでObsidianに再構築した（映画・番組とシーズン・アニメ・漫画・コミック・ゲーム・ボードゲームと拡張・音楽アルバム。表紙、状態、評価、所有、価格、プレイ日付き）。Basesでギャラリー/カンバン/優先度別ウィッシュリスト/積みゲー/「Year in Media」を表示。ボタンでセッション記録・既読・評価・貸出・Kickstarter管理、IMDb/BoardGameGeek/Steamからの取り込み、「IMDbコレクションを取り込んで」といったAIスキルも使う。ウィッシュリストは公開のギフトリストにもなる。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Obsidian（Bases、Media DB）＋AIスキル</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2〜3（この規模。小規模版は★1〜2）</td></tr>
+<tr><th>出典</th><td><a href="https://www.dsebastien.net/media-management-system-obsidian/">dsebastien.net</a><br><span class="url">https://www.dsebastien.net/media-management-system-obsidian/</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>11. 音楽ライブラリ自動生成＋「実際に見た・読んだもの」のキュレーター <span class="badge ok">実例・一次報告</span></h3>
+<p>#9と同じPi/Vaultシステムの別ジョブ。<b>MusicNotes</b>はNASの音楽コレクションの全アーティスト/アルバムのノートを自動作成（3,700件超でVault最大のフォルダ）。<b>YouTubeReview</b>はYouTube/YouTube Music履歴を月次でレビューし、見逃した投稿や放置した登録チャンネルを指摘、「Claude Picks」プレイリストを作る。<b>InstapaperCurator</b>は毎週金曜に閲覧履歴から10記事を選びInstapaperへ保存する。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Obsidian</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2〜3</td></tr>
+<tr><th>出典</th><td><a href="https://rossgoodman.com/2026/10/03/what-i-have-built-with-claude-code-so-far/">rossgoodman.com</a><br><span class="url">https://rossgoodman.com/2026/10/03/what-i-have-built-with-claude-code-so-far/</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>12. 習慣のRPG化：XP・連続バッジ・ロック・ご褒美ガチャ（Obsidian） <span class="badge ok">実例・一次報告</span></h3>
+<p>習慣アプリに飽きた筆者が、デイリーノートをDataviewJS＋TemplaterでRPGにした。達成した習慣でXPが貯まりキャラシート風ダッシュボードに表示、瞑想・運動・読書の連続日数でバッジ解放（7日で「Mindfulness Sprout」、30日で「Zen Master」）、難しい習慣は前提回数を満たすまでロック、日次目標達成で自作リストからランダムにご褒美（「罪悪感なしで映画」「ゲーム30分」「デザート」）が出る。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Obsidian（Dataview、Templater）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2（スクリプトはコピペ可）</td></tr>
+<tr><th>出典</th><td><a href="https://www.xda-developers.com/gamify-habits-obsidian-using-dataview-templater/">XDA（システム作者本人の記事）</a><br><span class="url">https://www.xda-developers.com/gamify-habits-obsidian-using-dataview-templater/</span></td></tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>4. 食</h2>
+
+<div class="card block-ok">
+<h3>13. 日曜朝の自動献立＋買い物リスト（月約0.5ドル） <span class="badge ok">実例・一次報告</span></h3>
+<p>Louis Racicot のレシピは構造化Markdownとして（GitHub上の）Obsidian Vaultにある。毎週日曜7時にGitHub Actionがレシピ→JSON化し、1回目のClaude API呼び出しはメタデータだけで制約ファイルに沿って1週間の献立を選び、2回目は選ばれたレシピの詳細だけで買い物リストを作り、献立とリストをメールで送る。2段階にするのがコスト削減のコツ（月約0.5ドル、サブスク不要）。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Obsidian＋Claude API（Claude Codeではない）＋GitHub Actions</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2〜3</td></tr>
+<tr><th>出典</th><td><a href="https://medium.com/@lracicot/automating-my-weekly-meal-planning-with-ai-and-obsidian-d61e73fd21c3">Medium（lracicot）</a><br><span class="url">https://medium.com/@lracicot/automating-my-weekly-meal-planning-with-ai-and-obsidian-d61e73fd21c3</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>14. 日記と連動する栄養・カロリー台帳 <span class="badge ok">実例・一次報告</span></h3>
+<p>Oscar López は1食/1レシピ1ノートで、インラインのDataviewフィールド（カロリー、たんぱく質、脂質、炭水化物、食物繊維、糖類。AIがレシピ・分量から推定）を持たせる。日記ノートから朝昼夕・間食をリンクし、DataviewJSレポートが食べた分量を掛けて1日の摂取量を集計する。外食も専用のノート型で同様に扱う。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Obsidian（Dataview）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2</td></tr>
+<tr><th>出典</th><td><a href="https://oscarlp6.dev/en/blogs/nutrition-system-obsidian/">oscarlp6.dev</a><br><span class="url">https://oscarlp6.dev/en/blogs/nutrition-system-obsidian/</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>15. 材料のチェックを外すと買い物リストになるレシピ管理 <span class="badge ok">実例・一次報告</span></h3>
+<p>Obsidian Forum の長期showcase。レシピは作って気に入った後にだけ追加し、材料は <code>#ingredients</code> 付きのチェックボックスにする。1週間の計画や、調理で小麦粉・砂糖などの常備品を使い切るときはチェックを外すだけで、Checklistプラグインがサイドバーの買い物リストを自動で作る。店で済ませるとレシピ側のチェックも戻る。上にDataviewの料理本ビューを重ねる。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Obsidian（Checklist、Dataview）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://forum.obsidian.md/t/obsidian-as-recipe-manager-and-shopping-list-tutorial/40799?ref=obsidian-roundup.ghost.io">Obsidian Forum</a><br><span class="url">https://forum.obsidian.md/t/obsidian-as-recipe-manager-and-shopping-list-tutorial/40799?ref=obsidian-roundup.ghost.io</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>フォーラム上のshowcase/チュートリアル。</div>
+</div>
+</section>
+
+<section>
+<h2>5. 音声・ボット</h2>
+
+<div class="card block-ok">
+<h3>16. iPhoneボイスメモ82本を2台で文字起こし→印刷用PDF冊子 <span class="badge ok">実例・一次報告</span></h3>
+<p>Brett Ridenour は、Claude CodeにTailscale経由でMacBookへSSHさせ、82本の <code>.m4a</code>（2018年〜、1.1GB）をLinuxデスクトップへコピーし、Whisperで並列に文字起こしさせた。旧GPUが遅いため、再びSSHしてM1 Pro MacBookにWhisperを入れ第2の並列ジョブを走らせ、止まっていた5時間・8時間の2録音を除外して未処理24本を再実行。69本を文字起こし・要約し、Python/reportlabで印刷用PDF冊子にまとめた。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Whisper</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2</td></tr>
+<tr><th>出典</th><td><a href="https://www.brettridenour.com/blog/what-im-actually-doing-with-claude-code">brettridenour.com</a><br><span class="url">https://www.brettridenour.com/blog/what-im-actually-doing-with-claude-code</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>17. Obsidian Vaultを長期記憶にするTelegramボット（WHOOP連携） <span class="badge ok">実例・一次報告</span></h3>
+<p>Steve Haddad の「Second Brain」は Hetzner VPS（合計月約15〜25ドル）で24時間動く。Telegramにテキストか音声（Whisperで文字起こし）で話しかけると、約2,300チャンクのVaultを意味検索してから答え、定時ブリーフィング、SQLiteでのタスク管理、文書/書籍の取り込み、WHOOPの健康データ取得を行う。同じVaultはCloudflareトンネル越しのホスト型MCPサーバ（search_vault / get_note / list_assets / save_note）でClaudeアプリやClaude Codeからも使える。「本番稼働中」と報告されている。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude API＋Obsidian＋MCP（組み合わせ。Claude Codeはクライアントの1つ）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://www.stevehaddad.io/work/second-brain">stevehaddad.io</a><br><span class="url">https://www.stevehaddad.io/work/second-brain</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>18. 音声中心のTelegramライフコーチ → Todoist＋カレンダー＋Obsidian <span class="badge ok">実例・一次報告</span></h3>
+<p>「Life Pilot Agent」：Telegramで音声を送るとGroq Whisperが文字起こしし、Claudeが分類してTodoistのタスク、カレンダーの文脈、目標に紐づくObsidianノートを作る。フォームもアプリ起動も不要。実践する心理士が作り、コーチング/内省の手順は一般的な生産性論ではなく心理学の枠組みに基づく。<code>/recall</code> でVault全体を意味検索できる。VPSで24時間、Claude Code＋MCPで稼働。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Obsidian＋MCP</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3（自前運用）／動いた後の利用は★1</td></tr>
+<tr><th>出典</th><td><a href="https://github.com/VDanchAI/life-pilot-agent">GitHub（VDanchAI）</a><br><span class="url">https://github.com/VDanchAI/life-pilot-agent</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>作者本人のオープンソースプロジェクト。</div>
+</div>
+
+<div class="card block-ok">
+<h3>19. 自分でツールを生やすDiscordアシスタント <span class="badge ok">実例・一次報告</span></h3>
+<p>「LogBot / OpenCClaw」：DiscordとClaude Code CLIをつなぐ最小の橋渡しで、最初はMCPツールがゼロ。Claude Codeはファイルを書けるので、新しい依頼が来ると <code>tools/</code> フォルダにツールを自作し、MCPサーバが自動登録する。現在時刻・天気（Open-Meteo）・Googleカレンダー認証と一覧を自作し、さらに組み合わせて「いつ出発すべきか」を返す <code>departure-check</code>（予定＋移動時間＋天気）を作った。cronで起こして能動的にDiscord通知する。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code＋Discord＋MCP</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★★</span> ★3</td></tr>
+<tr><th>出典</th><td><a href="https://dev.to/quolu/how-i-built-an-ai-assistant-that-grows-its-own-tools-572g">DEV（quolu）</a><br><span class="url">https://dev.to/quolu/how-i-built-an-ai-assistant-that-grows-its-own-tools-572g</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>20. 一語の個人スキル2つ：<code>/maintenance</code>（管理会社ポータル）と<code>/meme</code>（動画ミーム） <span class="badge ok">実例・一次報告</span></h3>
+<p>#16と同じ筆者。(a) アパートの扱いにくい修繕申請ポータルを、Chrome MCP経由でClaude Codeに1回だけ案内（ドメインをまたぐログイン、Cookieバナー、入れ子のドロップダウン）。その学習が <code>/maintenance</code> スキルになり、今は「エアコンが壊れた」と添えるだけで申請される。(b) <code>/meme</code>：ミームを説明すると、yt-dlpでInstagram/YouTubeから該当クリップを探し、ffprobeで調べ、ffmpegフィルタ（文字バー、正確な9:16）で完成した <code>.mp4</code> を出力する。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code（＋Chrome MCP、ffmpeg）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2（最初に1回の案内が必要）</td></tr>
+<tr><th>出典</th><td><a href="https://www.brettridenour.com/blog/what-im-actually-doing-with-claude-code">brettridenour.com</a><br><span class="url">https://www.brettridenour.com/blog/what-im-actually-doing-with-claude-code</span></td></tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>6. 写真</h2>
+
+<div class="card block-ok">
+<h3>21. 意味のないファイル名の写真・スクショ1,400枚を整理 <span class="badge ok">実例・一次報告</span></h3>
+<p>筆者はClaude Code（プランモード、分類とプロジェクトを定義した <code>FILE_CLEANUP_REFERENCE.md</code> を参照）に、進行中/終了プロジェクトのスクショ、電子書籍の表紙、レシート、作品画像など1,400枚超が散らかったデスクトップを任せた。まず意味のある名前の2割を仕分け、残りはバッチで内容を目視識別し、重複や空に近い画像を除き、分かる名前に改名して合意したフォルダに振り分けさせた。<code>IMG523.jpg</code> のような個人写真にも使え、子ども・ペット・場所などの自分の分類を当てられるという。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://wonderingaboutai.substack.com/p/i-used-claude-code-to-organize-1400">Substack（wonderingaboutai）</a><br><span class="url">https://wonderingaboutai.substack.com/p/i-used-claude-code-to-organize-1400</span></td></tr>
+</table>
+</div>
+</section>
+
+<section>
+<h2>7. 趣味コーディング</h2>
+
+<div class="card block-ok">
+<h3>22. 現役トラック運転手が作る積載ブラウザゲーム <span class="badge ok">実例・一次報告</span></h3>
+<p>日本の積載車（陸送）ドライバーが、セミトレーラーに車7台を積み、輪止め・固定をする工程を忠実に再現するブラウザゲーム「僕らは陸送屋」を制作中。コードはほぼClaude Code、画像・効果音・BGM・音声は他の生成AI。リポジトリのCLAUDE.mdで作業を5つの「部署」（実装・グラフィック・サウンドなど）に分け、各自が自分のファイルしか触れないようにして無関係な箇所の破損を防ぐのが工夫。実車の動きは数式でAIに指示している。GitHub Pages/itch.ioで無料公開。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code（＋他の生成AI）</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2（本人はコードを書かない）</td></tr>
+<tr><th>出典</th><td><a href="https://zenn.dev/wadome_do/articles/wadome-ai-game-dev-notes">Zenn（wadome_do）</a><br><span class="url">https://zenn.dev/wadome_do/articles/wadome-ai-game-dev-notes</span></td></tr>
+</table>
+</div>
+
+<div class="card block-ok">
+<h3>23. プログラミング未経験のローグライク、初売上2ドル → 宣伝機構もClaude Codeが構築 <span class="badge ok">実例・一次報告</span></h3>
+<p>「プログラミングゼロ」を名乗る筆者が、Claude Codeに1.5万行のPython製CLIローグライク「DUNG: Azure Flame」を作らせた（グラフィック素材の壁を避けるため意図的にテキスト/CLI）。筆者は操作感のみ試遊してフィードバックした。Claude Codeがitch.ioを提案し、登録・ストアページ作成・2ドル設定まで行い、2週間で初売上。続いてCDPブラウザ自動化「Chrome Bridge」で、Zenn・note・Qiita・はてな・dev.toへの告知記事投稿やKo-fi/Gumroad開設を2日で11媒体。コストはClaude Code月200ドルに対し売上2ドルと本人が率直に書いている。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2</td></tr>
+<tr><th>出典</th><td><a href="https://zenn.dev/yurukusa/articles/f62a4d0e9d9eb1">Zenn（yurukusa）</a><br><span class="url">https://zenn.dev/yurukusa/articles/f62a4d0e9d9eb1</span></td></tr>
+</table>
+</div>
+
+<div class="card block-unv">
+<h3>24. 一人のためのツール3種（XDAがReddit報告をまとめたもの） <span class="badge unv">実例・二次経由</span></h3>
+<p>(a) <b>Alexandria</b>：電子書籍をマルチボイスのオーディオブックに変換。完全ローカル動作（LM Studio/Ollama経由でローカルLLMも可、GitHubスター約700）。Redditユーザー Finrandojin がClaudeで制作。(b) <b>かぎ針編み翻訳</b>：knowbitが、ノートPCから離れるために始めた編み物用に、暗号のような編み図略語を平易な英語に直し一段ずつ案内するWebアプリをClaude Codeで作り、編み友達からログイン希望が出た。(c) <b>トレッドミルのリモコン</b>：pdawesが、デスク用トレッドミル付属の使いにくい専用アプリ/リモコンの代わりに自作のBluetoothリモコンを作り、Googleマップのルートを「歩ける」ようにした。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Claude Code</td></tr>
+<tr><th>難易度</th><td><span class="stars">★★☆</span> ★2</td></tr>
+<tr><th>出典</th><td><a href="https://www.xda-developers.com/most-useful-things-people-built-with-claude-code/">XDA（まとめ記事）</a><br><span class="url">https://www.xda-developers.com/most-useful-things-people-built-with-claude-code/</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>XDAのまとめ経由。元のReddit投稿は未開封のため、実在だが二次情報として扱う。</div>
+</div>
+</section>
+
+<section>
+<h2>8. Muse活用</h2>
+
+<div class="card block-unv">
+<h3>25. Museが電話をかけ、保留で待ち、Marketplaceで値切る <span class="badge unv">実例・二次経由</span></h3>
+<p>NYTの2週間テスト（Eli Tan）で、Museは歯科保険会社に電話して会員IDと本人確認の質問に答え、保留で待ってから人間の担当者に引き継いだ。カード明細をスプレッドシートにして重複サブスクを発見、オンラインフォーム入力、駐車違反の支払い、Facebook Marketplaceで中古の陶器の値引き交渉もした（ある再話では何日も安値で粘り、最後は本人が定価で支払った）。同じ報道の注意点：AmazonはMuseの購入をブロック、提携外のWebフォームで失敗あり、Yahoo Financeのテスターは閉店済みの店と架空の電話番号を示された。事実確認は必要。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Museのみ</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://personalagentbench.com/meta-muse-review/">Personal Agent Bench（まとめ）</a><br><span class="url">https://personalagentbench.com/meta-muse-review/</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>レビューまとめ経由（NYT原文は有料で未確認。歯科保険・Marketplace・重複サブスクは複数の二次情報で一致）。</div>
+</div>
+
+<div class="card block-ok">
+<h3>26. Muse常設自動化：価格監視・健康コーチ・出発通知・習慣連続記録 <span class="badge ok">実例・一次報告</span></h3>
+<p>Tom's Guide の Elton Jones が10個のMuse自動化を設定し、すべて動作したと報告。目立つもの：<b>毎日の価格監視</b>（eBayでWWEのBlu-rayを20ドル未満・送料無料で発見）、<b>iPhoneヘルスのコーチ</b>（歩数・運動・睡眠を読み、ほとんど動いていない日の14時に声かけ。学習した就寝時刻の30分前に就寝準備の通知。平日/週末で違う）、<b>出発通知</b>（場所つきの予定の前に交通状況から。10分前着）、<b>習慣の連続記録</b>（毎日21時に水1ガロンの確認。2回抜けると「うるさくなる」）、好みのゲーム/グラフィックノベルの新作の日曜ダイジェスト、翌日の優先3つを出す1日の締めの確認。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Museのみ</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://www.tomsguide.com/ai/i-used-meta-muse-to-automate-10-tasks-from-reminders-to-trip-alerts-and-i-cant-believe-how-well-metas-ai-handled-everything">Tom's Guide</a><br><span class="url">https://www.tomsguide.com/ai/i-used-meta-muse-to-automate-10-tasks-from-reminders-to-trip-alerts-and-i-cant-believe-how-well-metas-ai-handled-everything</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>リサーチ時にライブで開いて確認済み（調査メモ）。実機テストの報告。</div>
+</div>
+
+<div class="card block-ok">
+<h3>27. Museが6人の夕食を予約し、配達を見張る <span class="badge ok">実例・一次報告</span></h3>
+<p>競合のLindyが公開した2日間の比較テスト。Museは妹のホテル近くの店を探し、19:30に6人で予約し、承認後に使い切りの仮想カードで預かり金を支払い、荷物追跡ページを監視して配達が遅れるとWhatsAppで知らせた。同テストでMuseの弱点も判明：完了した個人セッションは同僚と共有できない（設計上、個人専用）。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Museのみ</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://www.lindy.ai/blog/meta-muse-vs-lindy">Lindy blog</a><br><span class="url">https://www.lindy.ai/blog/meta-muse-vs-lindy</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>競合（Lindy）自身のテストで、記事中に偏りが明示されている。フレーミングを割り引いて読み、事実は具体的。</div>
+</div>
+
+<div class="card block-ok">
+<h3>28. 日本のMuse：Yahoo!ショッピングで決済直前まで、リール→買い物リスト、駅での通知 <span class="badge ok">実例・一次報告</span></h3>
+<p>Museは2026-10-23に日本で提供開始（北米に次ぐ最初の地域。iOS/Android/muse.ai、日本の発表にWhatsAppチャネルはなし）。日本の編集部テスト（Web版）で、Yahoo!ショッピングで2L×6本の水を「最終確認まで、実際には買わない」で依頼。ヤマダ電機のYahoo!店の商品ページを開き、Stripe Linkに登録した住所・カードを使い（カード番号はチャットに出ず、店には使い切り番号を発行）、許可/拒否の承認パネルで停止した。ただしチャットの合計（1,392円）とパネルの見積（1,397円）が5円ずれていた。Meta発表の使い方：<b>Instagramで保存したレシピのリールを買い物リストに</b>、位置情報を連携すると駅到着時に「近くにスーパーあり、買い物メモはこちら」と先回り通知（編集部が確認）、<b>2つのカレンダーに同時書き込み</b>（私用の予定＋仕事用カレンダーの「不在」枠で新規会議を自動辞退）。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Museのみ</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://lolipop.jp/ai/media/what-is-meta-muse/">Lolipop（解説＋実機テスト）</a> ／ <a href="https://dcross.impress.co.jp/docs/news/004914.html">Impress DIGITAL X（提供開始ニュース）</a><br><span class="url">https://lolipop.jp/ai/media/what-is-meta-muse/</span><br><span class="url">https://dcross.impress.co.jp/docs/news/004914.html</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>編集部の実機テストで確認できたのはYahoo!ショッピングとカレンダーの部分。<b>メルカリ／マネーフォワードME／チケットぴあ連携は「近日対応予定」の発表のみで、実際に使える状態は未検証</b>。確認済みの提携先はStripe Link、Shopify、Trip.com、Agoda、Klook。</div>
+</div>
+
+<div class="card block-ok">
+<h3>29. 家族の運用レイヤーとしてのMuse：朝の家族ニュースレター、ポッドキャスト、長期目標 <span class="badge ok">実例・一次報告</span></h3>
+<p>Claireの「How I AI」実機レビュー（YouTube/ポッドキャスト）より。Museは初回で整ったPDFの<b>家族向け朝のニュースレター</b>を作った（他のエージェントで作ったものより良いとのこと）。<b>長期の個人目標</b>を会話で追跡する（例：8.5か月の子の寝かしつけトレーニングを同室で穏やかに進める。数ターンで文脈を集め、リマインダーも設定）。さらにMeta/ユーザーの報告として、任意のトピックの<b>ポッドキャスト</b>を生成できる（ある利用者は記事全文をそれで読み上げさせた）。権限の要求は、必要になった瞬間に出て、事前の一括要求ではない。</p>
+<table class="spec">
+<tr><th>使うツール</th><td>Museのみ</td></tr>
+<tr><th>難易度</th><td><span class="stars">★☆☆</span> ★1</td></tr>
+<tr><th>出典</th><td><a href="https://www.lennysnewsletter.com/p/how-i-ai-metas-muse-review-how-warp">Lenny's Newsletter（How I AI）</a> ／ <a href="https://www.youtube.com/watch?v=2UwemqPkJSQ">YouTube</a><br><span class="url">https://www.lennysnewsletter.com/p/how-i-ai-metas-muse-review-how-warp</span><br><span class="url">https://www.youtube.com/watch?v=2UwemqPkJSQ</span></td></tr>
+</table>
+<div class="note"><b>留保：</b>ポッドキャスト生成は利用者/Metaの報告であり、独立には未検証。</div>
+</div>
+</section>
+
+<section>
+<h2>9. YouTubeで見るなら</h2>
+<table class="yt">
+<tr><th style="width:30%">動画タイトル</th><th style="width:24%">チャンネル／制作者</th><th style="width:24%">URL</th><th>見どころ</th></tr>
+<tr><td>How I Use Obsidian + Claude Code to Run My Life</td><td>Startup-ideasポッドキャスト回、Vin（「Internet Vin」）。実Vaultでのライブデモ（カスタムコマンド /trace, /connect, /ideas, /ghost, /drift, /challenge）</td><td><a href="https://www.youtube.com/watch?v=6MBq1paspVU">https://www.youtube.com/watch?v=6MBq1paspVU</a></td><td>日記を超えた「思考パートナー」用途：アイデアの変遷をたどる、2領域をつなぐ</td></tr>
+<tr><td>Obsidian plus Claude works. I'm the one who said it wouldn't.</td><td>Paperless Movement / Tom（myICOR）※概要欄の表示どおりのチャンネル名</td><td><a href="https://www.youtube.com/watch?v=B35SWx_4BNM">https://www.youtube.com/watch?v=B35SWx_4BNM</a></td><td>スクリーンショットから日記を作る流れと、Basesでの人物ベース作成</td></tr>
+<tr><td>スマホ1台でObsidian × Claude Codeを操る ─ Remote Control活用術（非エンジニア向け）</td><td>日本のクリエイター（チャンネル名は検索抜粋に出ておらず<b>未確認</b>）</td><td><a href="https://www.youtube.com/watch?v=lUE5MF06zIU">https://www.youtube.com/watch?v=lUE5MF06zIU</a></td><td>非エンジニアがスマホだけで自宅MacのClaude CodeとVaultを操作：ソファ/通勤での利用、コマンド1つ＋QRで設定</td></tr>
+<tr><td>How I AI: Meta’s Muse review (+ how Warp ships with AI)</td><td>Claire / Lenny’s「How I AI」</td><td><a href="https://www.youtube.com/watch?v=2UwemqPkJSQ">https://www.youtube.com/watch?v=2UwemqPkJSQ</a></td><td>事例#29の家族ニュースレター・カレンダー・目標追跡の実機レビュー</td></tr>
+<tr><td>Meta's Muse wants the keys to your life. Should you say yes? (Ep 12)</td><td>Personal Agent Bench（Ep 12）</td><td><a href="https://www.youtube.com/watch?v=eDPfmTVTshY">https://www.youtube.com/watch?v=eDPfmTVTshY</a></td><td>レビュアーのタスクまとめ＋Museを自分で判定する「5つの用事テスト」</td></tr>
+<tr><td>I Built an AI Employee That Runs My Life 24/7 (Claude Code + Obsidian)</td><td>制作者名は検索抜粋に出ておらず<b>未確認</b></td><td><a href="https://www.youtube.com/watch?v=XHQuJIw31Qg">https://www.youtube.com/watch?v=XHQuJIw31Qg</a></td><td>Obsidian内のチェックボックスで承認→エージェントが実行（Gmail/WhatsApp/SNS/請求の監視）。※仕事・ビジネス寄り</td></tr>
+<tr><td>Obsidian: how to use it for your project working with Claude Code</td><td>制作者名は未取得・<b>未確認</b></td><td><a href="https://www.youtube.com/watch?v=OdJhzIxCneo">https://www.youtube.com/watch?v=OdJhzIxCneo</a></td><td>カスタムスラッシュコマンド（/resume, /compress, /preserve）つきの実用的なVault＋Claude Code設定</td></tr>
+</table>
+</section>
+
+<section>
+<h2>10. 確認できなかったこと</h2>
+<div class="warn">ソースファイル「Could not verify / open questions」の内容。</div>
+<ul>
+<li><b>NYT / WSJ / Verge のMuse原文</b>は有料、またはPersonal Agent Benchのまとめや二次的な再話経由でしか到達できなかった。歯科保険・Marketplace・重複サブスクの事実は少なくとも2つの二次情報で一致するが、NYT原文では読んでいない。</li>
+<li><b>XDAのAlexandria／かぎ針編み／トレッドミル（#24）</b>は元のReddit投稿を開いておらず、実在だが二次情報として扱う。</li>
+<li><b>バセドウ病のウェアラブルモデル（#4）</b>はRedditの原投稿ではなくplaybooks.botの要約経由で知ったもの。バックテスト数値は独立に確認しておらず、実験であって医療助言ではない。</li>
+<li><b>Muse×メルカリ／マネーフォワードME／チケットぴあ連携</b>は、日本向けに近日対応予定と発表されているのみ。2026-11-21時点で実際に使えている情報源は見つかっていない。また、日本のユーザーにStripe Linkの購入保護が適用されるかは、Lolipop記事で明示的に未確認とされている。</li>
+<li><b>Museの提供地域・料金の記述は情報源間で少し食い違う</b>（一部の2026年10月の比較では「米国のみ」、一方で2026-10-23の日本提供開始の記録があり、別所ではシンガポール/カナダへの言及もある）。日本提供開始は日本語の2情報源（Lolipop、Impress）で裏づけられている。</li>
+<li><b>noteのガイド（#6）</b>の例は筆者自身のデータではなく説明用の可能性がある。そのため「提案・ガイド」とした。</li>
+<li>YouTubeのチャンネル名のいくつかは検索抜粋になく、推測せず表で「未確認」とした。</li>
+<li>日本語の<b>個人（編集部ではない）によるMuseの日記・ブログ</b>は見つからなかった。日本語のMuse情報は今のところニュース・解説・編集部テストで、Claude Code＋Obsidianの豊富な日本語の一人称記事とは対照的。</li>
+<li><b>ライブで開いて確認できたのは2件のみ</b>（Ross Goodmanの記事、Tom's GuideのMuse自動化テスト）。残りは2026-11-21時点のWeb検索インデックスに基づく。</li>
+</ul>
+</section>
+
+</body>
+</html>

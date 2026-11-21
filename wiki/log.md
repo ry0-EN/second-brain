@@ -41,3 +41,4 @@ description: 取り込み・検索・lintの append-only 作業記録。
 - 提案資料（Webアーティファクト）の課金表記を訂正（Ryo承認）：古い「月$20のAgent SDKクレジット」前提の8か所をPro通常利用枠の説明に差し替え、旧表記残存0件を確認。[[Knowledge/mistakes]] に「訂正の横展開忘れ」の再発防止エントリを追加。レポート：`AI/sessions/muse/2026-11-21-1212-artifact-billing-correction.md`。
 - 初回週次レビューを実施（2026-11-21午後）：作業の振り分けを「寄せ気味ハイブリッド」に決定（[[Decisions/2026-11-21-claude-code-routing]]）。週次レビューの進め方を確定し、Google Tasksの傾向集計は来週（11/28）から組み込む（[[Decisions/2026-11-21-weekly-review-format]]）。レポート：`AI/sessions/muse/2026-11-21-1232-weekly-review-01.md`。
 - Git運用を変更（Ryo指示）：決め事・運用ルール変更・修正のVault記録は事前確認なしで自動pushする。AGENTS.md「Gitと承認」を改定し、[[Decisions/2026-11-21-auto-push-rule]] を新設。本記録が新ルールの適用第1号。
+- Claude Code経由で新規プライベート活用法レポート `AI/新規活用法レポート.html` を作成：入力は `00-inbox/source-new-private-uses-2026-11-21.md`（29項目）のみ、Web取得なし。既知の運用ナレッジは除外し、8テーマに整理、二次経由・未検証・競合テストの留保を引き継ぎ。未コミット。レポート：`AI/sessions/claude-code/2026-11-21-1245-new-uses-report.md`。
